@@ -18,7 +18,7 @@ submit.addEventListener("click", (e) => {
     const field = document.querySelector("#cityField");
     const url = buildUrl(field.value);
 
-    display.innerHTML = "";
+    display.innerHTML = " ";
     requestApi(url);
 });
 
@@ -34,9 +34,9 @@ function doSomething(data) {
     } = data.current_condition;
 
     let { day_long } = data['fcst_day_0'];
-
-    let jourJ = document.createElement("p");
-    let dateJ = document.createElement("p");
+    let divJourJ = document.createElement('div');
+    let jourJ = document.createElement("h2");
+    let dateJ = document.createElement("h4");
     let heureJ = document.createElement("p");
     let conditionJ = document.createElement("p");
     let tempJ = document.createElement("p");
@@ -53,14 +53,15 @@ function doSomething(data) {
     iconJ.setAttribute("src", icon_big);
     evoDay.textContent = "Evolution de la journée heure par heure :";
 
-
-    display.appendChild(jourJ);
-    display.appendChild(dateJ);
-    display.appendChild(heureJ);
-    display.appendChild(iconJ);
-    display.appendChild(conditionJ);
-    display.appendChild(tempJ);
-    display.appendChild(evoDay);
+    display.appendChild(divJourJ);
+    divJourJ.setAttribute("id", "idJourJ");
+    divJourJ.appendChild(jourJ);
+    divJourJ.appendChild(dateJ);
+    divJourJ.appendChild(heureJ);
+    divJourJ.appendChild(iconJ);
+    divJourJ.appendChild(conditionJ);
+    divJourJ.appendChild(tempJ);
+    divJourJ.appendChild(evoDay);
 
     for (let i = 0; i <= 23; i++) {
         const line = document.createElement("p");
@@ -98,8 +99,8 @@ function doSomething(data) {
             icon_big
         } = element;
 
-        let jourP = document.createElement("p");
-        let dateP = document.createElement("p");
+        let jourP = document.createElement("h2");
+        let dateP = document.createElement("h4");
         let iconP = document.createElement("img");
         let conditionP = document.createElement("p");
         let tminP = document.createElement("p");
@@ -145,18 +146,30 @@ function doSomething(data) {
     }
 };
 
-// function blabla(j){
-//     for (let i = 0; i <= 23; i++) {
-//         const line = document.createElement("p");
-//         const heure = document.createElement("span");
-//         heure.textContent = `${i}h00`;
-//         display.appendChild(line);
-//         line.appendChild(heure);
-//         const imgH = document.createElement("img");
-//         imgH.setAttribute('src', `${data.fcst_day_[j].hourly_data[`${i}H00`].ICON}`);
-//         line.appendChild(imgH);
-//         const conditonsH = document.createElement("span");
-//         conditonsH.textContent = `${data.fcst_day_[j].hourly_data[`${i}H00`].CONDITION_KEY}`;
-//         line.appendChild(conditonsH);
-//     }
-// }
+
+var now = new Date();
+
+var heure   = now.getHours();
+
+console.log(heure);
+let enTete = document.querySelector("header");
+function headBackground() {
+    if(heure < 7){
+        enTete.style.backgroundImage = "url('./images/nuit_matin.jpg')";
+        enTete.style.backgroundSize =  "cover";
+    } else if (heure < 10){
+        enTete.style.backgroundImage = "url('./images/lever_de_soleil.jpg')";
+        enTete.style.backgroundSize =  "cover";
+    } else if (heure < 18){
+        enTete.style.backgroundImage = "url('./images/jour.jpg')";
+        enTete.style.backgroundSize =  "cover";
+    } else if (heure < 21){
+        enTete.style.backgroundImage = "url('./images/coucher-soleil-19avril16-316-scaled.jpg')";
+        enTete.style.backgroundSize =  "cover";
+    } else if (heure < 2){
+        enTete.style.backgroundImage = "url('./images/nuit.jpg')";
+        enTete.style.backgroundSize =  "cover";
+    }
+}
+
+headBackground();

@@ -1,5 +1,5 @@
 * {
-    background-color: rgb(168, 255, 255);
+    background-color: rgb(25, 51, 105);
     margin: 0;
     padding: 0;
     font-family: roboto;
@@ -8,13 +8,29 @@
 
 header,
 header * {
-    background-color: antiquewhite;
+    background-color: transparent;
 }
 
 header {
-    height: 200px;
+    height: 300px;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 100px;
+}
+
+h1 {
+    margin-left: 40px;
+    margin-top: 40px;
+    font-size: 4em;
+    color: aliceblue;
+    text-transform: uppercase;
+}
+
+h3 {
+    position: absolute;
+    top: 100px;
+    left: 40px;
+    color: aliceblue;
 }
 
 form {
@@ -25,11 +41,44 @@ form {
 }
 
 input {
-    color: purple;
     padding: 5px;
+    border: 3px solid blueviolet;
     border-radius: 10px;
+    font-weight: 4em;
+    background-color: white;
+    background-color: transparent;
+}
+
+input:hover {
+    border-color: blueviolet;
+    background-color: rgba(48, 48, 48, 0.2);
 }
 
 input:focus {
-    background-color: blue;
+    border-color: blueviolet;
+}
+
+label,
+input {
+    font-size: 1.3em;
+}
+
+#display {
+    color: aliceblue;
+    margin-left: 40px;
+    line-height: 2;
+}
+
+#idJourJ {
+    color: aqua;
+    width: 300px;
+    text-align: center;
+    border: 1px solid aliceblue;
+    padding: 20px;
+}
+
+#idJourJ h2 {
+    font-size: 1.9em;
+    line-height: 1;
+    text-align: left;
 }
